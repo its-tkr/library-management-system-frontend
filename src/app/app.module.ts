@@ -15,6 +15,7 @@ import { EditbookComponent } from './components/editbook/editbook.component';
 import { AddbookComponent } from './components/addbook/addbook.component';
 import { RentlistComponent } from './components/rentlist/rentlist.component';
 import { ApiInterceptorInterceptor } from './interceptors/api-interceptor.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ApiInterceptorInterceptor } from './interceptors/api-interceptor.interc
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [AuthGuard, { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptorInterceptor, multi: true }],
   bootstrap: [AppComponent],

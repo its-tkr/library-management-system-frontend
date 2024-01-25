@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="card bg-light">
+        <div class="row" *ngIf="book">
+            <form [formGroup]="editForm" (ngSubmit)="submit()">
+                <div class="m-3 row">
+                    <div class="col-6">
+                        <label class="form-label" for="title">Title</label>
+                        <input required required class="form-control" type="text" name="title" id="title"
+                            formControlName="title">
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label" for="author">Author</label>
+                        <input required class="form-control" type="text" name="author" id="author"
+                            formControlName="author">
+                    </div>
+                </div>
+                <div class="m-3 row">
+                    <div class="col-6">
+                        <label class="form-label" for="categories">Category</label>
+                        <input required class="form-control" type="text" name="categories" id="categories"
+                            formControlName="categories">
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label" for="volume">Volume</label>
+                        <input required class="form-control" type="text" name="volume" id="volume"
+                            formControlName="volume">
+                    </div>
+                </div>
+                <div class="m-3 row">
+                    <div class="col-6">
+                        <label class="form-label" for="year">Year</label>
+                        <input required class="form-control" class="form-control" type="text" name="year" id="year"
+                            formControlName="year">
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label" for="language">Language</label>
+                        <input required class="form-control" type="text" name="language" id="language"
+                            formControlName="language">
+                    </div>
+                </div>
+                <div class="m-3 row">
+                    <div class="col-6">
+                        <label class="form-label" for="pages">Pages</label>
+                        <input required class="form-control" type="text" name="pages" id="pages"
+                            formControlName="pages">
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label" for="available">Available</label>
+                        <input required class="form-control" type="number" name="available" id="available"
+                            formControlName="available">
+                    </div>
+                </div>
+                <div class="m-3 row">
+                    <div class="col-6">
+                        <label class="form-label" for="description">Description</label>
+                        <textarea rows="5" class="form-control" type="text" name="description" id="description"
+                            formControlName="description"></textarea>
+                    </div>
+                </div>
+                <div class="row justify-content-center m-2">
+                    <div class="col-2">
+                        <button class="btn btn-success" type="submit" [disabled]="editForm.invalid">Submit</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<form [formGroup]="loginForm" (ngSubmit)="login()" class="container mt-5">
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+            <div class="card px-5 py-5" id="form1">
+                <div class="form-data">
+                    <small class="text-danger" *ngIf="msg">{{msg}}</small>
+                    <div class="forms-inputs mb-4">
+                        <label class="form-label" for="E-mail">E-mail</label>
+                        <input class="form-control" formControlName="userEmail" autocomplete="off" type="text" required>
+                        <small class="text-danger" *ngIf="f['userEmail'].touched && f['userEmail'].invalid">A valid
+                            email is required!</small>
+                    </div>
+                    <div class="forms-inputs mb-4">
+                        <label class="form-label" for="Password">Password</label>
+                        <input class="form-control" formControlName="userPassword" autocomplete="off" type="password"
+                            required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
+                        <small class="text-danger" *ngIf="f['userPassword'].touched && f['userPassword'].invalid">A
+                            Valid Password is required</small>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-dark w-100" [disabled]="loginForm.invalid" type="submit">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

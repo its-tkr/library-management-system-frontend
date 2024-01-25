@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="card bg-light">
+    <div class="row">
+      <div class="card col-3 m-5 mb-2" *ngFor="let book of books">
+        <div class="card-body">
+          <h5 class="card-title">{{book.title}}</h5>
+          <p class="card-text">{{book.description.slice(0,100)+'....'}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><b>Author : </b>{{book.author.slice(0,20)+'...'}}</li>
+          <li class="list-group-item"><b>Category : </b>{{book.categories.slice(0,20)+'...'}}</li>
+          <li class="list-group-item"><b>Year : </b>{{book.year}}</li>
+          <li class="list-group-item"><b>Edition : </b>{{book.edition}}</li>
+        </ul>
+        <div class="card-body">
+          <button class="card-link btn btn-success" *ngIf="this.authService.isUser"
+            [routerLink]="['/rent-book',book._id]">Rent</button>
+          <button class="card-link btn btn-primary" *ngIf="this.authService.isAdmin"
+            [routerLink]="['/edit-book',book._id]">Edit</button>
+          <button class="card-link btn btn-warning" *ngIf="this.authService.isAdmin"
+            (click)="deleteBook(book._id)">Delete</button>
+        </div>
+      </div><br>
+    </div>
+  </div>
+</div>

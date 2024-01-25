@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="card bg-light">
+    <div class="row" *ngIf="books?.length >0">
+      <div class="card col-3 m-5 mb-2" *ngFor="let book of books">
+        <div class="card-body">
+          <h5 class="card-title">{{book.bookDetail[0].title}}</h5>
+          <h4 *ngIf="book.expired" class="text-danger">Rent is Expired</h4>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><b>Rent Date :</b>{{book.rentDate.slice(0,10)}}</li>
+          <li class="list-group-item"><b>Return Date : </b>{{book.returnDate.slice(0,10)}}</li>
+        </ul>
+        <div class="card-body">
+          <a class="card-link" (click)="returnBook(book._id,book.bookId)">Return</a>
+        </div>
+      </div><br>
+    </div>
+    <div class="row" *ngIf="books?.length <= 0">
+      <h5>NO BOOKS AVAILABLE</h5>
+    </div>
+  </div>
+</div>

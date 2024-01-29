@@ -3,23 +3,26 @@
     <div class="row d-flex justify-content-center">
         <div class="col-md-6">
             <div class="card px-5 py-5" id="form1">
+                <h3 class="text-center mb-5">Login</h3>
                 <div class="form-data">
-                    <small class="text-danger" *ngIf="msg">{{msg}}</small>
+                    <mat-error *ngIf="msg">{{msg}}</mat-error>
                     <div class="forms-inputs mb-4">
-                        <label class="form-label" for="E-mail">E-mail</label>
-                        <input class="form-control" formControlName="userEmail" autocomplete="off" type="text" required>
-                        <small class="text-danger" *ngIf="f['userEmail'].touched && f['userEmail'].invalid">A valid
-                            email is required!</small>
+                        <mat-form-field appearance="outline">
+                            <mat-label>E-mail</mat-label>
+                            <input formControlName="userEmail" autocomplete="off" type="text" required matInput>
+                            <mat-error *ngIf="loginForm.touched && loginForm.invalid">Invalid Email</mat-error>
+                        </mat-form-field>
                     </div>
                     <div class="forms-inputs mb-4">
-                        <label class="form-label" for="Password">Password</label>
-                        <input class="form-control" formControlName="userPassword" autocomplete="off" type="password"
-                            required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
-                        <small class="text-danger" *ngIf="f['userPassword'].touched && f['userPassword'].invalid">A
-                            Valid Password is required</small>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Password</mat-label>
+                            <input formControlName="userPassword" autocomplete="off" type="password"
+                            required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" matInput>
+                            <mat-error *ngIf="loginForm.touched && loginForm.invalid">Invalid Password</mat-error>
+                        </mat-form-field>
                     </div>
                     <div class="mb-3">
-                        <button class="btn btn-dark w-100" [disabled]="loginForm.invalid" type="submit">Login</button>
+                        <button mat-raised-button class="btn btn-dark w-100" [disabled]="loginForm.invalid" type="submit" color="primary">Login</button>
                     </div>
                 </div>
             </div>

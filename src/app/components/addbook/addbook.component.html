@@ -1,65 +1,92 @@
 <div class="container">
     <div class="card bg-light">
         <div class="row">
-            <form [formGroup]="addBookForm" (ngSubmit)="submit()">
+            <form [formGroup]=" addBookForm" (ngSubmit)="submit()">
                 <div class="m-3 row">
                     <div class="col-6">
-                        <label class="form-label" for="title">Title</label>
-                        <input required required class="form-control" type="text" name="title" id="title"
-                            formControlName="title">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Title</mat-label>
+                            <input required   type="text" name="title" id="title"
+                            formControlName="title" matInput>
+                            <mat-error *ngIf=" addBookForm.touched &&  addBookForm.invalid">Invalid Title</mat-error>
+                        </mat-form-field>
                     </div>
                     <div class="col-6">
-                        <label class="form-label" for="author">Author</label>
-                        <input required class="form-control" type="text" name="author" id="author"
-                            formControlName="author">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Author</mat-label>
+                            <input required   type="text" name="author" id="author"
+                            formControlName="author" matInput>
+                            <mat-error *ngIf=" addBookForm.touched &&  addBookForm.invalid">Invalid Author</mat-error>
+                        </mat-form-field>
                     </div>
                 </div>
                 <div class="m-3 row">
                     <div class="col-6">
-                        <label class="form-label" for="categories">Category</label>
-                        <input required class="form-control" type="text" name="categories" id="categories"
-                            formControlName="categories">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Category</mat-label>
+                            <input required   type="text" name="categories" id="categories"
+                            formControlName="categories" matInput>
+                            <mat-error *ngIf=" addBookForm.touched &&  addBookForm.invalid">Invalid Category</mat-error>
+                        </mat-form-field>
                     </div>
                     <div class="col-6">
-                        <label class="form-label" for="volume">Volume</label>
-                        <input required class="form-control" type="text" name="volume" id="volume"
-                            formControlName="volume">
-                    </div>
-                </div>
-                <div class="m-3 row">
-                    <div class="col-6">
-                        <label class="form-label" for="year">Year</label>
-                        <input required class="form-control" class="form-control" type="text" name="year" id="year"
-                            formControlName="year">
-                    </div>
-                    <div class="col-6">
-                        <label class="form-label" for="language">Language</label>
-                        <input required class="form-control" type="text" name="language" id="language"
-                            formControlName="language">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Volume</mat-label>
+                            <input required   type="text" name="volume" id="volume"
+                            formControlName="volume" matInput>
+                            <mat-error *ngIf=" addBookForm.touched &&  addBookForm.invalid">Invalid Volume</mat-error>
+                        </mat-form-field>
                     </div>
                 </div>
                 <div class="m-3 row">
                     <div class="col-6">
-                        <label class="form-label" for="pages">Pages</label>
-                        <input required class="form-control" type="text" name="pages" id="pages"
-                            formControlName="pages">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Year</mat-label>
+                            <input required     type="text" name="year" id="year"
+                            formControlName="year" matInput>
+                            <mat-error *ngIf=" addBookForm.touched &&  addBookForm.invalid">Invalid Year</mat-error>
+                        </mat-form-field>    
                     </div>
                     <div class="col-6">
-                        <label class="form-label" for="available">Available</label>
-                        <input required class="form-control" type="number" name="available" id="available"
-                            formControlName="available">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Language</mat-label>
+                            <input required   type="text" name="language" id="language"
+                            formControlName="language" matInput>
+                            <mat-error *ngIf=" addBookForm.touched &&  addBookForm.invalid">Invalid Langiage</mat-error>
+                        </mat-form-field>
                     </div>
                 </div>
                 <div class="m-3 row">
                     <div class="col-6">
-                        <label class="form-label" for="description">Description</label>
-                        <textarea rows="5" class="form-control" type="text" name="description" id="description"
-                            formControlName="description"></textarea>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Pages</mat-label>
+                            <input required   type="text" name="pages" id="pages"
+                            formControlName="pages" matInput>
+                            <mat-error *ngIf=" addBookForm.touched &&  addBookForm.invalid">Invalid Pages</mat-error>
+                        </mat-form-field> 
+                    </div>
+                    <div class="col-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Available</mat-label>
+                            <input required   type="number" name="available" id="available"
+                            formControlName="available" matInput>
+                            <mat-error *ngIf=" addBookForm.touched &&  addBookForm.invalid">Invalid Available</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="m-3 row">
+                    <div class="col-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Description</mat-label>
+                            <textarea rows="5"   type="text" name="description" id="description"
+                            formControlName="description" matInput></textarea>
+                            <mat-error *ngIf=" addBookForm.touched &&  addBookForm.invalid">Invalid Description</mat-error>
+                        </mat-form-field>
                     </div>
                 </div>
                 <div class="row justify-content-center m-2">
                     <div class="col-2">
-                        <button class="btn btn-success" type="submit" [disabled]="addBookForm.invalid">Submit</button>
+                        <button mat-raised-button color="primary" type="submit" [disabled]=" addBookForm.invalid">Submit</button>
                     </div>
                 </div>
 

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MaterialModule } from 'src/app/modules/material/material.module';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { RentbookComponent } from '../rentbook/rentbook.component';
 
 @Component({
   selector: 'app-home',
@@ -45,6 +46,12 @@ export class HomeComponent implements OnInit {
       }
     })
   }
+  rentBook(id:any):void{
+    const dialogRef=this.dialog.open(RentbookComponent, {
+      data:id,
+      width: '100%',
+    });
+  }
 }
 @Component({
   selector: 'delete-dialog',
@@ -55,7 +62,5 @@ export class HomeComponent implements OnInit {
 })
 export class DeleteDialogComponent {
 
-  constructor(public dialogRef: MatDialogRef<DeleteDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { 
-    
-  }
+  constructor(public dialogRef: MatDialogRef<DeleteDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
 }

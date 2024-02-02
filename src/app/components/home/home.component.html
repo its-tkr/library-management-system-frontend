@@ -1,6 +1,7 @@
 <div class="container">
   <mat-card class="bg-light">
     <div class="row">
+        <mat-progress-bar mode="query" *ngIf="books?.length <= 0"></mat-progress-bar>
       <mat-card class="col-3 m-5 mb-2" *ngFor="let book of books">
         <mat-card-header class="">
           <mat-card-title class="">{{book.title}}</mat-card-title>
@@ -18,13 +19,14 @@
         <mat-divider></mat-divider>
         <mat-card-actions>
           <button mat-stroked-button *ngIf="this.authService.isUser"
-          [routerLink]="['/rent-book',book._id]" color="primary">Rent</button>
+          (click)="rentBook(book._id)" color="primary">Rent</button>
           <button mat-stroked-button *ngIf="this.authService.isAdmin"
           [routerLink]="['/edit-book',book._id]" color="primary">Edit</button>
           <button mat-stroked-button *ngIf="this.authService.isAdmin"
           (click)="deleteBook(book._id)"color="warn">Delete</button>
         </mat-card-actions>
       </mat-card><br>
+      <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page"></mat-paginator>
     </div>
   </mat-card>
 </div>

@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { RentBook } from 'src/app/interfaces/rent-book';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-rentbook',
   templateUrl: './rentbook.component.html',
@@ -12,7 +14,10 @@ export class RentbookComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private api: ApiService,
-    private router: Router
+    private router: Router,
+    public dialogRef: MatDialogRef<RentbookComponent>,
+    @Inject (MAT_DIALOG_DATA) public data:any
+    
   ) {}
   public book!: any;
   public rentError!: any;
@@ -26,7 +31,7 @@ export class RentbookComponent implements OnInit {
       rentDays: new FormControl(),
     });
     this.api
-      .getBooks(`/books/${this.route.snapshot.paramMap.get('id')}`)
+      .getBooks(`/books/${this.data}`)
       .subscribe(
         (data: any) => {
           this.book = data;

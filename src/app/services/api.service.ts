@@ -5,11 +5,11 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   private apiKey = 'http://localhost:3000/api';
 
-  login(email: any,password:any): any {
-    return this.http.post(this.apiKey + '/user/login',{userEmail:email,userPassword:password});
+  login(email: any, password: any): any {
+    return this.http.post(this.apiKey + '/user/login', { userEmail: email, userPassword: password });
   }
   getBooks(books: any): any {
     return this.http.get(this.apiKey + books);
@@ -23,7 +23,16 @@ export class ApiService {
   deleteBook(book: any): any {
     return this.http.delete(this.apiKey + book);
   }
-  deleteRentBook(book: any,bookId:any): any {
-    return this.http.delete(this.apiKey + book,bookId);
+  deleteRentBook(book: any, bookId: any): any {
+    return this.http.delete(this.apiKey + book, bookId);
+  }
+  checkPassword(password: any): any {
+    return this.http.post(this.apiKey + '/user/checkPassword', password);
+  }
+  updateUser(user: any): any {
+    return this.http.post(this.apiKey + '/user/updateUser', user);
+  }
+  getUser(): any {
+    return this.http.get(this.apiKey + '/user/getUser');
   }
 }

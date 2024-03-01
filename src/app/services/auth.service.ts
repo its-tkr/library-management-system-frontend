@@ -6,8 +6,8 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
   private apiKey = 'http://localhost:3000/api';
-  public isAdmin: boolean = true;
-  public isUser: boolean = true;
+  public isAdmin: boolean = false;
+  public isUser: boolean = false;
 
   constructor(private http: HttpClient) { }
 

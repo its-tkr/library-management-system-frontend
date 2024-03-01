@@ -8,6 +8,7 @@ import { MybookComponent } from './components/mybook/mybook.component';
 import { RentbookComponent } from './components/rentbook/rentbook.component';
 import { RentlistComponent } from './components/rentlist/rentlist.component';
 import { AuthGuard } from './guards/auth.guard';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'edit-book/:id', component: EditbookComponent, canActivate: [AuthGuard], },
   { path: 'add-book', component: AddbookComponent, canActivate: [AuthGuard] },
   { path: 'rent-list', component: RentlistComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
 

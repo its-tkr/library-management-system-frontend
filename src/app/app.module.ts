@@ -17,6 +17,7 @@ import { RentlistComponent } from './components/rentlist/rentlist.component';
 import { ApiInterceptorInterceptor } from './interceptors/api-interceptor.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material/material.module';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MaterialModule } from './modules/material/material.module';
     EditbookComponent,
     AddbookComponent,
     RentlistComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

@@ -34,6 +34,10 @@
 <a mat-button [routerLink]="['/add-book']" *ngIf="this.authService.isAdmin"> Add Book </a>
 <a mat-button [routerLink]="['/rent-list']" *ngIf="this.authService.isAdmin"> Rent List </a>
 <a mat-button [routerLink]="['/my-books']" *ngIf="this.authService.isUser"> My Book </a>
-<button mat-raised-button  color="warn" (click)="logout()" *ngIf="this.authService.isAdmin || this.authService.isUser"> Logout </button>
+<button mat-icon-button *ngIf="this.authService.isAdmin || this.authService.isUser" [matMenuTriggerFor]="beforeMenu"><mat-icon>account_circle</mat-icon></button>
+<mat-menu #beforeMenu="matMenu" xPosition="before">
+  <button mat-menu-item [routerLink]="['/profile']" >Profile</button>
+  <button mat-menu-item (click)="logout()"  >Logout</button>
+</mat-menu>
 </mat-toolbar>
 <br>

@@ -1,0 +1,73 @@
+<form [formGroup]="profileForm" (ngSubmit)="submit()" class="container mt-5" *ngIf="validPassword">
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+            <div class="card px-5 py-5" id="form1">
+                <h3 class="text-center mb-5">Edit Profile</h3>
+                <div class="form-data">
+                    <mat-error *ngIf="err">{{err}}</mat-error>
+                    <mat-slide-toggle (change)="toggleChangePassword($event)">Change Password</mat-slide-toggle>
+                    <div class="forms-inputs mb-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>E-mail</mat-label>
+                            <input formControlName="userEmail" autocomplete="off" type="text" required matInput>
+                            <mat-error *ngIf="profileForm.touched && profileForm.invalid">Invalid Email</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="forms-inputs mb-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>User Name</mat-label>
+                            <input formControlName="userName" autocomplete="off" type="text"
+                            required  matInput min="4">
+                            <mat-error *ngIf="profileForm.touched && profileForm.invalid">Invalid UserName</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="forms-inputs mb-4" *ngIf="showpasswordChange">
+                        <mat-form-field appearance="outline">
+                            <mat-label>New Password</mat-label>
+                            <input formControlName="newPassword" autocomplete="off" type="password"
+                            required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" matInput>
+                            <mat-error *ngIf="profileForm.touched && profileForm.invalid">Invalid Password</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="forms-inputs mb-4" *ngIf="showpasswordChange">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Confirm New Password</mat-label>
+                            <input formControlName="confirmPassword" autocomplete="off" type="password"
+                            required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"  matInput>
+                            <mat-error *ngIf="profileForm.touched && profileForm.invalid">Invalid Password</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="mb-3">
+                        <button mat-raised-button class="btn btn-dark w-100" [disabled]="profileForm.invalid" type="submit" color="primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<form [formGroup]="loginForm" (ngSubmit)="checkPassword()" class="container mt-5" *ngIf="!validPassword">
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+            <div class="card px-5 py-5" id="form1">
+                <h3 class="text-center mb-5">Enter Password</h3>
+                <div class="form-data">
+                    <mat-error></mat-error>
+                    <div class="forms-inputs mb-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Current Password</mat-label>
+                            <input formControlName="userPassword" autocomplete="off" type="password"
+                            required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" matInput>
+                            <mat-error *ngIf="loginForm.touched && loginForm.invalid">Invalid Password</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="mb-3">
+                        <button mat-raised-button class="btn btn-dark w-100" [disabled]="loginForm.invalid" type="submit" color="primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
